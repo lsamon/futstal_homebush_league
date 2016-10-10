@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>FutsalHomebushLeague</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div class="container">
+  <nav>
+    <%= link_to 'Home', root_path %> |
+    <% unless @current_player %>
+      <%= link_to 'Sign Up', new_player_path %> |
+      <%= link_to 'Sign In', login_path %> |
+    <% else %>
+      <%= link_to "Logout #{@current_player.email}", login_path, :method => 'delete' %> |
+      <%= link_to "Update Usr Info", edit_player_path(@current_player) %>
+    <% end %>
+  </nav>
+  <%= yield %>
+</div>
+
+
+</body>
+</html>

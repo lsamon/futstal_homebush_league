@@ -1,0 +1,14 @@
+<h1>Player Profile</h1>
+<ul>
+  <% if @current_player.name %>
+    <li><%= @current_player.name %></li>
+  <% end %>
+  <li><%= @current_player.email %></li>
+  <% if @current_player.dob %>
+    <li><%= @current_player.dob %></li>
+  <% end %>
+
+  <% if @current_player.team %>
+    <li><%= link_to @current_player.team.name, team_path(@current_player.team) %></li>
+  <% end %>
+</ul>

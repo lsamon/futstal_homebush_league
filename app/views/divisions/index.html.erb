@@ -1,0 +1,19 @@
+<% @divisions.each do | d | %>
+  <h1>Division <%= d.division_number %></h1>
+  <table>
+    <% d.teams.each do | team | %>
+      <tr>
+        <td>
+          <%= team.name %>
+        </td>
+        <td>
+          <%= team.points %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>
+
+<p>
+  <%= @message %>
+</p>

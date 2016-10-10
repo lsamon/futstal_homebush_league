@@ -1,0 +1,14 @@
+<h1>Add Games</h1>
+
+<%= form_for @game do | f | %>
+  <%= f.label :team_a_id %>
+  <%= f.select :team_a_id, Team.pluck(:name, :id), :prompt => 'Select Team' %>
+  <%= f.text_field :team_a_score %>
+
+  <%= f.label :team_b_id %>
+  <%= f.select :team_b_id, Team.pluck(:name, :id), :prompt => 'Select Team' %>
+  <%= f.text_field :team_b_score %>
+
+  <%= f.submit %>
+
+<% end %>

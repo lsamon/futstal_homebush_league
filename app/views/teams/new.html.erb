@@ -1,0 +1,11 @@
+<h1>Add Team</h1>
+<%= form_for @team do |f| %>
+  <%= f.label :name %>
+  <%= f.text_field :name %>
+
+  <%= f.label :division_id %>
+  <%= f.select :division_id, Division.pluck(:division_number, :id), :prompt => 'Select Division' %>
+
+  <%= f.submit "Add Team"%>
+
+<% end %>

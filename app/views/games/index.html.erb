@@ -1,0 +1,8 @@
+<h1>Game Results</h1>
+
+<% @games.each do | game | %>
+  <p>
+    <%= game.team_a.name %> | <%= game.team_a_score %> | <%= game.team_b.name %> | <%= game.team_b_score %> |
+  </p>
+
+<% end %>
