@@ -1,19 +1,23 @@
-<% @divisions.each do | d | %>
-  <h1>Division <%= d.division_number %></h1>
-  <table>
-    <% d.teams.each do | team | %>
-      <tr>
-        <td>
-          <%= team.name %>
-        </td>
-        <td>
-          <%= team.points %>
-        </td>
-      </tr>
-    <% end %>
-  </table>
-<% end %>
-
-<p>
-  <%= @message %>
-</p>
+<div class="divisions">
+  <% @divisions.each do | d | %>
+    <h1>Division <%= d.division_number %></h1>
+    <table class="table table-sm table-hover table-inverse">
+      <th>Team</th>
+      <th>Pl</th>
+      <th>GF</th>
+      <th>GA</th>
+      <th>GD</th>
+      <th>Pts</th>
+      <% d.teams.each do | team | %>
+        <tr>
+          <td><%= team.name %></td>
+          <td><%= Game.count_game(team.id) %></td>
+          <td><%= (Game.count_goals(team.id))[:for] %></td>
+          <td><%= (Game.count_goals(team.id))[:against] %></td>
+          <td><%= (Game.count_goals(team.id))[:for] - (Game.count_goals(team.id))[:against] %></td>
+          <td><%= team.points %></td>
+        </tr>
+      <% end %>
+    </table>
+  <% end %>
+</div>

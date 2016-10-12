@@ -1,4 +1,11 @@
 class PlayersController < ApplicationController
+  before_action :check_for_user, :only => [:edit, :update]
+  before_action :check_for_admin, :only => [:index]
+
+  def index
+    @players = Player.all
+  end
+
   def new
     @player = Player.new
   end
@@ -17,12 +24,23 @@ class PlayersController < ApplicationController
   end
 
   def edit
+    @player = @current_player
   end
 
   def update
-    @current_player.update player_params
+    # :email, :dob, :image, :name, :password, :password_confirmation
+    player = @current_player
 
-    redirect_to @current_player
+    if params[:file].present?
+      req = Cloudinary::Uploader.upload(params[:file])
+
+      player.image = req['public_id']
+    end
+
+    player.update_attributes player_params
+    player.save
+    redirect_to player
+
   end
 
   def destroy
@@ -30,6 +48,6 @@ class PlayersController < ApplicationController
 
   private
   def player_params
-    params.require(:player).permit(:email, :dob, :image, :name, :password, :password_confirmation)
+    params.require(:player).permit(:email, :dob, :name, :password, :password_confirmation)
   end
 end

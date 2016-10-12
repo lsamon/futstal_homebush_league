@@ -1,5 +1,5 @@
 Player.destroy_all
-p1 = Player.create :email => 'loui.amon@gmail.com', :name => 'Louis Amon', :password => 'chicken', :password_confirmation => 'chicken'
+p1 = Player.create :email => 'loui.amon@gmail.com', :name => 'Louis Amon', :password => 'chicken', :password_confirmation => 'chicken', :admin => true
 p2 = Player.create :email => 'atil.selik@gmail.com', :name => 'Atil Selik', :password => 'chicken', :password_confirmation => 'chicken'
 p3 = Player.create :email => 'cedric.roux@gmail.com', :name => 'Cedric Roux', :password => 'chicken', :password_confirmation => 'chicken'
 p4 = Player.create :email => 'fu.amon@gmail.com', :name => 'Fu Amon', :password => 'chicken', :password_confirmation => 'chicken'
@@ -28,3 +28,5 @@ t3.players << p4
 
 d1.teams << t3 << t4
 d2.teams << t1 << t2
+
+Game.add_current_points

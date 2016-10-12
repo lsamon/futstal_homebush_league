@@ -1,5 +1,5 @@
 <h1>User info</h1>
-<%= form_for @player do |f| %>
+<%= form_for(@player, :html => {:multipart => true}) do |f| %>
   <p>
     <%= f.label :name %>
     <%= f.text_field :name %>
@@ -26,12 +26,12 @@
 
   <p>
     <%= f.label :image %>
-    <%= f.url_field :image %>
+    <%= f.cl_image_upload :image %>
   </p>
 
   <p>
     <%= f.label :team_id %>
-    <%= f.select :team_b_id, Team.pluck(:name, :id), :prompt => 'Select Team' %>
+    <%= f.select :team_id, Team.pluck(:name, :id), :prompt => 'Select Team' %>
   </p>
 
 

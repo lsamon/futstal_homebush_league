@@ -11,6 +11,7 @@
 #  password_digest :text
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  admin           :boolean
 #
 
 class Player < ActiveRecord::Base

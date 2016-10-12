@@ -1,14 +1,8 @@
-<h1>Add Games</h1>
+<div class="new_game_container">
+  <h1>Add Games</h1>
+  <div class="hide" id="new_game_form">
+    <%= render :partial => 'form' %>
+  </div>
+  <button name="add_game" class="add_game">Add Game</button>
 
-<%= form_for @game do | f | %>
-  <%= f.label :team_a_id %>
-  <%= f.select :team_a_id, Team.pluck(:name, :id), :prompt => 'Select Team' %>
-  <%= f.text_field :team_a_score %>
-
-  <%= f.label :team_b_id %>
-  <%= f.select :team_b_id, Team.pluck(:name, :id), :prompt => 'Select Team' %>
-  <%= f.text_field :team_b_score %>
-
-  <%= f.submit %>
-
-<% end %>
+</div>

@@ -4,20 +4,40 @@
   <title>FutsalHomebushLeague</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
+  <%= cloudinary_js_config %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 <div class="container">
-  <nav>
-    <%= link_to 'Home', root_path %> |
-    <% unless @current_player %>
-      <%= link_to 'Sign Up', new_player_path %> |
-      <%= link_to 'Sign In', login_path %> |
-    <% else %>
-      <%= link_to "Logout #{@current_player.email}", login_path, :method => 'delete' %> |
-      <%= link_to "Update Usr Info", edit_player_path(@current_player) %>
-    <% end %>
-  </nav>
+  <header>
+    <div id="logo">
+
+    </div>
+    <nav class="navbar navbar-inverse">
+      <ul class="nav navbar-nav">
+        <li class="active"><%= link_to 'Home', root_path %></li> |
+        <li><%= link_to 'Teams', teams_path %></li> |
+        <li><%= link_to 'Results', games_results_path %></li> |
+        <li><%= link_to 'Fixtures', games_fixtures_path %></li> |
+        <li><%= link_to 'Divisions', divisions_path %></li> |
+        <% unless @current_player %>
+            <li><%= link_to 'Sign Up', new_player_path %></li> |
+            <li><%= link_to 'Sign In', login_path %></li> |
+          <% else %>
+            <li><%= link_to "Logout #{@current_player.email}", login_path, :method => 'delete' %></li> |
+            <li><%= link_to 'Edit Profile', edit_player_path %></li>
+
+        <% if @current_player.present? && @current_player.admin? %>
+
+        <% end %>
+        <% end %>
+      </ul>
+    </nav>
+    <div id="banner">
+      <%= image_tag('/assets/futsal-banner.jpg')%>
+    </div>
+  </header>
   <%= yield %>
 </div>
 

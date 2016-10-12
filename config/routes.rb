@@ -2,8 +2,14 @@
 #
 #        Prefix Verb   URI Pattern                   Controller#Action
 #          root GET    /                             pages#home
-#       players POST   /players(.:format)            players#create
+#   edit_player GET    /players/edit(.:format)       players#edit
+#       players GET    /players(.:format)            players#index
+#               POST   /players(.:format)            players#create
 #    new_player GET    /players/new(.:format)        players#new
+#               GET    /players/:id/edit(.:format)   players#edit
+#        player GET    /players/:id(.:format)        players#show
+#               PATCH  /players/:id(.:format)        players#update
+#               PUT    /players/:id(.:format)        players#update
 #         teams GET    /teams(.:format)              teams#index
 #               POST   /teams(.:format)              teams#create
 #      new_team GET    /teams/new(.:format)          teams#new
@@ -35,6 +41,10 @@
 
 Rails.application.routes.draw do
   root :to => 'pages#home'
+  get '/players/edit' => 'players#edit', :as => 'edit_player'
+  get '/games/fixtures' => 'games#fixtures'
+  get '/games/results' => 'games#results'
+
   resources :players, :only => [:index, :new, :create, :show, :edit, :update]
   resources :teams
   resources :divisions

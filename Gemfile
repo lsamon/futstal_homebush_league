@@ -34,6 +34,10 @@ gem 'squeel'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'cloudinary'
+gem 'momentjs-rails'
+gem 'bootstrap3-datetimepicker-rails'
+
 group :production do
   gem 'rails_12factor'
 end

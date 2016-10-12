@@ -1,11 +1,11 @@
-<div class="game-results">
-  <h1>Game Results</h1>
+<div class="game-fixtures">
+  <h1>Game Fixtures</h1>
   <table class="table table-sm table-hover table-inverse">
-    <% @games.each do | game | %>
+    <% @fixtures.each do | game | %>
       <tr>
         <td><%= game.team_a.name %></td>
-        <td class="score"><%= game.team_a_score %></td>
-        <td class="score"><%= game.team_b_score %></td>
+        <td class="score"> - </td>
+        <td class="score"> - </td>
         <td><%= game.team_b.name %></td>
       </tr>
 

@@ -3,6 +3,9 @@
 <h3>Players</h3>
 <ul>
   <% @team.players.each do |p| %>
-    <li><%= link_to p.name, player_path(p) %></li>
+    <li><%= p.name %></li>
   <% end %>
 </ul>
+<div class="controls">
+  <%= link_to 'Back to Teams', teams_path %>
+</div>

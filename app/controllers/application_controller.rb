@@ -12,4 +12,12 @@ class ApplicationController < ActionController::Base
 
       session[:player_id] = nil unless @current_player.present?
     end
+
+    def check_for_user
+      redirect_to root_path unless @current_player.present?
+    end
+
+    def check_for_admin
+      redirect_to root_path unless (@current_player.present? && @current_player.admin?)
+    end
 end
