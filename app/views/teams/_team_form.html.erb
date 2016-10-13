@@ -1,10 +1,11 @@
 <%= form_for @team do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %>
+  <div class="col-xs-8 form-inline">
+    <%= f.label :name %>
+    <%= f.text_field :name, :class => 'form-control' %>
 
-  <%= f.label :division_id %>
-  <%= f.select :division_id, Division.pluck(:division_number, :id), :prompt => 'Select Division' %>
+    <%= f.label :division_id %>
+    <%= f.select :division_id, Division.pluck(:division_number, :id), {:prompt => 'Select Division'}, {:class => 'form-control'} %>
 
-  <%= f.submit "Add Team"%>
-
+    <%= f.submit "Add Team", :class => 'btn btn-primary'%>
+  </div>
 <% end %>
