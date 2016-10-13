@@ -11,6 +11,8 @@
             <td class="score"> - </td>
             <td><%= game.team_b.name %></td>
             <td><%= game.game_date.strftime("%d/%m/%y %H:%M") if game.game_date.present? %></td>
+            <td><%= link_to "Edit Game", edit_game_path(game.id) %> </td>
+            <td><%= link_to 'Delete Game', game, :method => 'delete' %></td>
           </tr>
           <% end %>
       <% end %>
