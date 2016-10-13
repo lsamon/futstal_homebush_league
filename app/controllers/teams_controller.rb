@@ -31,6 +31,7 @@ class TeamsController < ApplicationController
 
   def destroy
     @team = Team.find(params[:id])
+    @team.games.destroy_all if @teams.games.present?
     @team.destroy
     redirect_to :action => 'index'
   end

@@ -15,9 +15,9 @@ nav {
   float: right !important;
 }
 
-#banner {
+#banner img{
   max-width: 960px;
-  margin-bottom: 20px;
+  object-fit: cover;
 }
 
 #banner img{

@@ -15,10 +15,6 @@ class Team < ActiveRecord::Base
   has_many :games
 
   def games
-    Team.games(self.id)
-  end
-
-  def self.games(team_id)
-    Game.where('games.team_a_id = ? OR games.teams_b_id = ?', team_id, team_id)
+    Game.where('games.team_a_id = ? OR games.team_b_id = ?', id, id)
   end
 end
