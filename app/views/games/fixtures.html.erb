@@ -1,14 +1,23 @@
 <div class="game-fixtures">
-  <h1>Game Fixtures</h1>
-  <table class="table table-sm table-hover table-inverse">
-    <% @fixtures.each do | game | %>
-      <tr>
-        <td><%= game.team_a.name %></td>
-        <td class="score"> - </td>
-        <td class="score"> - </td>
-        <td><%= game.team_b.name %></td>
-      </tr>
+  <h2>Game Fixtures</h2>
+  <% Division.all.each do |div| %>
+    <h2> Division <%= div.division_number %> </h2>
+    <table class="table table-sm table-hover table-inverse">
+      <% @fixtures.each do | game | %>
+        <% if game.team_a.division.division_number == game.team_b.division.division_number  && game.team_a.division.division_number == div.division_number%>
+          <tr>
+            <td><%= game.team_a.name %></td>
+            <td class="score"> - </td>
+            <td class="score"> - </td>
+            <td><%= game.team_b.name %></td>
+            <td><%= game.game_date.strftime("%d/%m/%y %H:%M") if game.game_date.present? %></td>
+          </tr>
+          <% end %>
+      <% end %>
+    </table>
+  <% end %>
 
-    <% end %>
-  </table>
+  <% if @current_player.present? && @current_player.admin? %>
+    <p><%= link_to 'Add Fixture', new_game_path %></p>
+  <% end %>
 </div>

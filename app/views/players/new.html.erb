@@ -1,28 +1,24 @@
-<h1>Sign Up</h1>
+<div class="col-xs-4 user-form">
+  <h2>Sign Up</h2>
 
-<% if @player.errors.any? %>
-  <ol>
-    <% @player.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-  </ol>
-<% end %>
+  <% if @player.errors.any? %>
+    <ol>
+      <% @player.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ol>
+  <% end %>
 
-<%= form_for @player do |f| %>
-  <p>
+  <%= form_for @player do |f| %>
     <%= f.label :email %>
-    <%= f.email_field :email %>
-  </p>
+    <%= f.email_field :email, :class => 'form-control' %>
 
-  <p>
     <%= f.label :password %>
-    <%= f.password_field :password %>
-  </p>
+    <%= f.password_field :password, :class => 'form-control' %>
 
-  <p>
     <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation %>
-  </p>
+    <%= f.password_field :password_confirmation, :class => 'form-control' %>
 
-  <%= f.submit 'Sign up!' %>
-<% end %>
+    <%= f.submit 'Sign up!', :class => 'btn btn-primary' %>
+  <% end %>
+</div>

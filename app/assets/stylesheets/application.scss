@@ -17,6 +17,7 @@ nav {
 
 #banner {
   max-width: 960px;
+  margin-bottom: 20px;
 }
 
 #banner img{
@@ -50,4 +51,23 @@ nav {
   color: #373a3c;
   background-color: #eceeef;
   text-align: center;
+}
+
+
+.new_game_form {
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.add_game {
+  margin-top: 10px !important;
+  margin-bottom: 10px !important;
+}
+
+.user-form .form-control {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+.user-form .btn-primary {
+  width: 100%;
 }

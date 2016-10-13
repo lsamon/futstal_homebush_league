@@ -1,8 +1,14 @@
+<% if flash[:error].present? %>
+  <div class="alert alert-danger">
+    <%= flash[:error] %>
+  </div>
+<% end %>
+
 <div class="new_game_container">
   <h1>Add Games</h1>
-  <div class="hide" id="new_game_form">
+  <div id="new_game_form">
     <%= render :partial => 'form' %>
   </div>
-  <button name="add_game" class="add_game">Add Game</button>
 
 </div>
+<button name="add_game" class="add_game btn btn-default">Add Game</button>

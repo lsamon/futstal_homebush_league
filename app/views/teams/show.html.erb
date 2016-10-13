@@ -7,5 +7,7 @@
   <% end %>
 </ul>
 <div class="controls">
+  <%= link_to "Edit Team", edit_team_path(@team.id) %> |
+  <%= link_to 'Delete Teams', @team, :method => 'delete' %> | 
   <%= link_to 'Back to Teams', teams_path %>
 </div>

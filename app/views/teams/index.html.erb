@@ -4,3 +4,7 @@
     <li><%= link_to team.name, team_path(team) %></li>
   <% end %>
 </ul>
+
+<% if @current_player.present? && @current_player.admin? %>
+  <p> <%= link_to 'Create Team', new_team_path %> </p>
+<% end %>

@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   before_action :fetch_player
 
     private
+
     def fetch_player
       if session[:player_id].present?
         @current_player = Player.find_by :id => session[:player_id]

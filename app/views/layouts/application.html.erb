@@ -16,17 +16,20 @@
     </div>
     <nav class="navbar navbar-inverse">
       <ul class="nav navbar-nav">
-        <li class="active"><%= link_to 'Home', root_path %></li> |
-        <li><%= link_to 'Teams', teams_path %></li> |
-        <li><%= link_to 'Results', games_results_path %></li> |
-        <li><%= link_to 'Fixtures', games_fixtures_path %></li> |
-        <li><%= link_to 'Divisions', divisions_path %></li> |
+        <li class="active"><%= link_to 'Home', root_path %></li>
+        <li><%= link_to 'Teams', teams_path %></li>
+        <li><%= link_to 'Results', games_results_path %></li>
+        <li><%= link_to 'Fixtures', games_fixtures_path %></li>
+        <li><%= link_to 'Divisions', divisions_path %></li>
         <% unless @current_player %>
-            <li><%= link_to 'Sign Up', new_player_path %></li> |
-            <li><%= link_to 'Sign In', login_path %></li> |
+            <li><%= link_to 'Sign Up', new_player_path %></li>
+            <li><%= link_to 'Sign In', login_path %></li>
           <% else %>
-            <li><%= link_to "Logout #{@current_player.email}", login_path, :method => 'delete' %></li> |
-            <li><%= link_to 'Edit Profile', edit_player_path %></li>
+            <li><%= link_to "Logout #{@current_player.name.split(' ')[0] if @current_player.name.present? }", login_path, :method => 'delete' %></li>
+
+            <li>
+                <%= link_to(raw('<span class="glyphicon glyphicon-user"></span>'), player_path(@current_player.id)) %>
+            </li>
 
         <% if @current_player.present? && @current_player.admin? %>
 
@@ -35,7 +38,7 @@
       </ul>
     </nav>
     <div id="banner">
-      <%= image_tag('/assets/futsal-banner.jpg')%>
+      <%= image_tag('/assets/futsal-banner.jpg') %>
     </div>
   </header>
   <%= yield %>

@@ -9,14 +9,18 @@
       <th>GD</th>
       <th>Pts</th>
       <% d.teams.each do | team | %>
-        <tr>
-          <td><%= team.name %></td>
-          <td><%= Game.count_game(team.id) %></td>
-          <td><%= (Game.count_goals(team.id))[:for] %></td>
-          <td><%= (Game.count_goals(team.id))[:against] %></td>
-          <td><%= (Game.count_goals(team.id))[:for] - (Game.count_goals(team.id))[:against] %></td>
-          <td><%= team.points %></td>
-        </tr>
+        <% if team.division.division_number == d.division_number %>
+          <div>
+            <tr>
+              <td><%= team.name %></td>
+              <td><%= Game.count_game(team.id) %></td>
+              <td><%= (Game.count_goals(team.id))[:for] %></td>
+              <td><%= (Game.count_goals(team.id))[:against] %></td>
+              <td><%= (Game.count_goals(team.id))[:for] - (Game.count_goals(team.id))[:against] %></td>
+              <td><%= team.points %></td>
+            </tr>
+          </div>
+        <% end %>
       <% end %>
     </table>
   <% end %>

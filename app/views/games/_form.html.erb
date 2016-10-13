@@ -1,11 +1,17 @@
-<%= form_for @game do | f | %>
-  <%= f.label :team_a_id %>
-  <%= f.select :team_a_id, Team.pluck(:name, :id), :prompt => 'Select Team' %>
-  <%= f.text_field :team_a_score %>
+<%= form_for @game, :html => {:class => 'form-inline'} do | f | %>
+    <%= f.select :team_a_id, Team.pluck(:name, :id), {:prompt => 'Select Team'}, {:class => 'form-control selectpicker' } %>
+    <%= f.text_field :team_a_score, :class => 'form-control', :placeholder => 'score', :maxlength => 5 %>
 
-  <%= f.label :team_b_id %>
-  <%= f.select :team_b_id, Team.pluck(:name, :id), :prompt => 'Select Team' %>
-  <%= f.text_field :team_b_score %>
+    <%= f.select :team_b_id, Team.pluck(:name, :id), {:prompt => 'Select Team'}, {:class => 'form-control selectpicker'} %>
+    <%= f.text_field :team_b_score, :class => 'form-control', :placeholder => 'score', :maxlength => 5 %>
 
-  <%= f.submit %>
+     <div class='input-group date gamedate'>
+      <%= f.datetime_field :game_date, :class => 'form-control', :placeholder => 'pick date' %>
+
+      <span class="input-group-addon">
+        <span class="glyphicon glyphicon-calendar"></span>
+      </span>
+    </div>
+
+  <%= f.submit :class => 'btn btn-primary'%>
 <% end %>

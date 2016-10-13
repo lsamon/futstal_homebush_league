@@ -12,3 +12,6 @@
     <li><%= link_to @current_player.team.name, team_path(@current_player.team) %></li>
   <% end %>
 </ul>
+<p>
+  <%= link_to "Edit Profile", edit_player_path(@current_player.id) %>
+</p>

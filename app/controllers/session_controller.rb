@@ -7,7 +7,7 @@ def create
     # raise params.inspect
     if player.present? && player.authenticate(params[:password])
       session[:player_id] = player.id
-      redirect_to root_path
+      redirect_to player_path(session[:player_id])
     else
       redirect_to login_path
     end
