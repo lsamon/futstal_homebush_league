@@ -5,10 +5,10 @@ p3 = Player.create :email => 'cedric.roux@gmail.com', :name => 'Cedric Roux', :p
 p4 = Player.create :email => 'fu.amon@gmail.com', :name => 'Fu Amon', :password => 'chicken', :password_confirmation => 'chicken'
 
 Team.destroy_all
-t1 = Team.create :name => 'United Nations', :points => 0
-t2 = Team.create :name => 'Sweet and Sour', :points => 0
-t3 = Team.create :name => 'Luking Good', :points => 0
-t4 = Team.create :name => 'National Joel Appreciation Club', :points => 0
+t1 = Team.create :name => 'United Nations', :points => 0, :goals_for => 8, :goals_against => 5
+t2 = Team.create :name => 'Sweet and Sour', :points => 0, :goals_for => 1, :goals_against => 6
+t3 = Team.create :name => 'Luking Good', :points => 0, :goals_for => 6, :goals_against => 10
+t4 = Team.create :name => 'National Joel Appreciation Club', :points => 0, :goals_for => 14, :goals_against => 7
 
 
 Division.destroy_all

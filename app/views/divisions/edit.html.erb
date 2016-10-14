@@ -1,2 +1,9 @@
-<h1>Divisions#edit</h1>
-<p>Find me in app/views/divisions/edit.html.erb</p>
+<h2>Edit Division</h2>
+  <%= form_for @division do |f| %>
+  <div class="form-inline">
+    <%= f.label :division_number %>
+    <%= f.text_field :division_number, :class => 'form-control'%>
+
+    <%= f.submit :class => 'btn btn-primary' %>
+  </div>
+<% end %>

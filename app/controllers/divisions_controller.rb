@@ -18,9 +18,21 @@ class DivisionsController < ApplicationController
   end
 
   def edit
+    @division = Division.find params[:id]
+  end
+
+  def update
+    division = Division.find params[:id]
+
+    division.update division_params
+    redirect_to division
   end
 
   def destroy
+    division = Division.find params[:id]
+
+    division.destroy
+    redirect_to :action => 'index'
   end
 
   private

@@ -7,7 +7,7 @@
         <td class="score"><%= game.team_a_score %></td>
         <td class="score"><%= game.team_b_score %></td>
         <td><%= game.team_b.name %></td>
-        <td><%= link_to "Edit Game", edit_game_path(game.id) %> </td>
+        <td><%= link_to "Edit Game", edit_game_path(game.id) if @current_player && @current_player.admin? %> </td>
       </tr>
 
     <% end %>

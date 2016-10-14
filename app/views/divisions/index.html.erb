@@ -8,15 +8,16 @@
       <th>GA</th>
       <th>GD</th>
       <th>Pts</th>
-      <% d.teams.each do | team | %>
+      <% teams = d.teams.order('points DESC') %>
+      <% teams.each do | team | %>
         <% if team.division.division_number == d.division_number %>
           <div>
             <tr>
               <td><%= team.name %></td>
-              <td><%= Game.count_game(team.id) %></td>
-              <td><%= (Game.count_goals(team.id))[:for] %></td>
-              <td><%= (Game.count_goals(team.id))[:against] %></td>
-              <td><%= (Game.count_goals(team.id))[:for] - (Game.count_goals(team.id))[:against] %></td>
+              <td><%= team.games.count %></td>
+              <td><%= team.goals_for %></td>
+              <td><%= team.goals_against %></td>
+              <td><%= team.goals_for - team.goals_against unless team.goals_for.nil? && team.goals_against.nil? %></td>
               <td><%= team.points %></td>
             </tr>
           </div>

@@ -1,7 +1,9 @@
-<h1>Divisions#new</h1>
+<h2>New Division</h2>
 <%= form_for @division do |f| %>
-  <%= f.label :division_number %>
-  <%= f.text_field :division_number %>
+  <div class="form-inline">
+    <%= f.label :division_number %>
+    <%= f.text_field :division_number, :class => 'form-control' %>
 
-  <%= f.submit %>
+    <%= f.submit :class => 'form-control'%>
+  </div>
 <% end %>

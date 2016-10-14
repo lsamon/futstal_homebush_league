@@ -38,6 +38,33 @@ class Game < ActiveRecord::Base
     game.team_b.save
   end
 
+  def self.edit_points(game, new_score_a, new_score_b)
+      return if new_score_a.nil? || new_score_b.nil?
+      if new_score_a > new_score_b && game.team_a_score < game.team_b_score
+        game.team_a.points += 3
+        game.team_b.points -= 3
+        # raise 'a wins'
+      elsif new_score_a < new_score_b && game.team_a_score > game.team_b_score
+        game.team_b.points += 3
+        game.team_a.points -= 3
+        # raise 'b wins'
+
+      elsif new_score_a == new_score_b && game.team_a_score < game.team_b_score
+        game.team_a.points += 1
+        game.team_b.points -= 2
+        # raise 'draw wins'
+      elsif new_score_a == new_score_b && game.team_a_score > game.team_b_score
+        game.team_a.points -= 2
+        game.team_b.points += 1
+      else
+        game.team_a.points -= 0
+        game.team_b.points += 0
+      end
+      game.team_a.save
+      game.team_b.save
+    end
+
+
   # this method is just to initialise the points correctly after seeding
   def self.add_current_points
     Game.all.each do |game|

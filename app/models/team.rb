@@ -17,4 +17,5 @@ class Team < ActiveRecord::Base
   def games
     Game.where('games.team_a_id = ? OR games.team_b_id = ?', id, id)
   end
+
 end

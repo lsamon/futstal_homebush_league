@@ -3,3 +3,8 @@
 <p>
   Random Information about this division.
 </p>
+
+<div class="controls">
+<%= link_to "Edit Division", edit_division_path(@division.id) %> |
+<%= link_to "Delete Division", division_path(@division.id), :method => 'delete' %>
+</div>

@@ -1,5 +1,8 @@
 <h1>Player Profile</h1>
 <ul>
+  <% if @current_player.image %>
+    <li class="thumb"> <%= @current_player.image %></li>
+  <% end %>
   <% if @current_player.name %>
     <li><%= @current_player.name %></li>
   <% end %>
