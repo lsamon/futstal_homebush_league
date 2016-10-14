@@ -1,15 +1,16 @@
 <div class="game-results">
   <h1>Game Results</h1>
-  <table class="table table-sm table-hover table-inverse">
-    <% @results.each do | game | %>
-      <tr>
-        <td><%= game.team_a.name %></td>
-        <td class="score"><%= game.team_a_score %></td>
-        <td class="score"><%= game.team_b_score %></td>
-        <td><%= game.team_b.name %></td>
-        <td><%= link_to "Edit Game", edit_game_path(game.id) if @current_player && @current_player.admin? %> </td>
-      </tr>
-
-    <% end %>
+  <div  class="tbl-content">
+  <table class="test-table">
+      <% @results.each do | game | %>
+        <tr>
+          <td><%= game.team_a.name %></td>
+          <td class="score"><%= game.team_a_score %></td>
+          <td class="score"><%= game.team_b_score %></td>
+          <td><%= game.team_b.name %></td>
+          <td><%= link_to "Edit Game", edit_game_path(game.id) if @current_player && @current_player.admin? %> </td>
+        </tr>
+      <% end %>
+    </div>
   </table>
 </div>
