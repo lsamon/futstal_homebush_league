@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>FutsalHomebushLeague</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
+  <%= cloudinary_js_config %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div class="page-header">
+    <div class="container">
+      <nav>
+        <ul>
+          <div class="menu-nav">
+            <li class="active link-1">
+              <%= link_to 'Home', root_path %>
+            </li>
+          </div>
+        </ul>
+      </nav>
+    </div>
+  </div>
+<div class="container">
+  <%= yield %>
+</div>
+  </body>
+</html>

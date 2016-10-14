@@ -8,6 +8,7 @@ class PlayersController < ApplicationController
 
   def new
     @player = Player.new
+    render :layout => "login_signup"
   end
 
   def show
