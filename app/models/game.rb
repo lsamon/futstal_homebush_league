@@ -109,4 +109,28 @@ class Game < ActiveRecord::Base
     for_against
   end
 
+  def clean_before_destroy(game)
+    if game.team_a_score.present? && game.team_b_score.present?
+      # Reduce number of goals
+      game.team_a.goals_for -= game.team_a_score
+      game.team_a.goals_against -= game.team_b_score
+
+      game.team_b.goals_for -= game.team_b_score
+      game.team_b.goals_against -= game.team_a_score
+
+      #reduce points
+
+      if game.team_a.score > game.team_b.score
+        game.team_a.points -= 3
+      elsif game.team_a.score < game.team_b.score
+        game.team_b.points -= 3
+      else
+        game.team_a.points -= 1
+        game.team_b.points -= 1
+      end
+      game.team_a.save
+      game.team_b.save
+    end
+  end
+
 end

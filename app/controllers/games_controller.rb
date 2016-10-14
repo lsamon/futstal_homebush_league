@@ -18,6 +18,12 @@ class GamesController < ApplicationController
     @game = Game.new
   end
 
+  def destroy
+    game = Game.find params[:id]
+    Game.clean_before_destroy(game)
+    game.destroy
+  end
+
   def create
     @game = Game.new game_params
     team_a_id = params[:game][:team_a_id]
