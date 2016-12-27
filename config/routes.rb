@@ -40,6 +40,7 @@
 #
 
 Rails.application.routes.draw do
+
   root :to => 'pages#home'
   get '/players/edit' => 'players#edit', :as => 'edit_player'
   get '/games/fixtures' => 'games#fixtures'
@@ -49,6 +50,7 @@ Rails.application.routes.draw do
   resources :teams
   resources :divisions
   resources :games
+  resources :articles
 
   get '/login' => 'session#new'
   post '/login' => 'session#create'

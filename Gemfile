@@ -28,6 +28,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bcrypt'
 gem 'bootstrap-sass'
 gem 'squeel'
+gem 'pry-rails'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
@@ -37,6 +38,7 @@ gem 'squeel'
 gem 'cloudinary'
 gem 'momentjs-rails'
 gem 'bootstrap3-datetimepicker-rails'
+# gem 'mercury-rails'
 
 group :production do
   gem 'rails_12factor'
@@ -46,7 +48,6 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   gem 'annotate'
-  gem 'pry-rails'
 end
 
 group :development do

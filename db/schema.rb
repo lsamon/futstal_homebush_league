@@ -11,10 +11,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161013232328) do
+ActiveRecord::Schema.define(version: 20161106100139) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "articles", force: :cascade do |t|
+    t.string   "title"
+    t.text     "content"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "category_id"
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "divisions", force: :cascade do |t|
     t.integer  "division_number"
@@ -26,11 +40,12 @@ ActiveRecord::Schema.define(version: 20161013232328) do
     t.integer  "team_a_id"
     t.integer  "team_b_id"
     t.text     "final_score"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
     t.integer  "team_a_score"
     t.integer  "team_b_score"
     t.datetime "game_date"
+    t.boolean  "played",       default: false
   end
 
   create_table "players", force: :cascade do |t|

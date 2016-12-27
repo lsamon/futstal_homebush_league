@@ -2,14 +2,31 @@
 @import "bootstrap";
 @import "bootstrap-datetimepicker";
 
-header .page-header {
-  padding-bottom: 25px !important;
-  margin: 20px 0 20px !important;
-  border-bottom: 1px solid #eeeeee !important;
+html {
+  /* Size of largest container or bigger */
+  min-width: 1080px;
+}
+
+header {
+  background-color: #1A2930;
+  margin-top: -10px;
+}
+
+.page-header {
+  height: 70px;
+  line-height: 70px;
+  max-width: 1120px;
+  margin: 0 auto;
+  border-bottom: none;
 }
 
 nav {
   text-align: left;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
 }
 
 nav li {
@@ -36,6 +53,14 @@ nav li {
 
 .menu-user-nav li {
   display: inline-block;
+}
+
+.container {
+  padding: 10px;
+}
+
+.container h2 {
+  padding-left: 10px;
 }
 
 .user-form {
@@ -101,6 +126,11 @@ nav li {
 .user-form .btn-primary {
   width: 100%;
 }
+
+label {
+  width: 150px;
+  text-align: right;
+}
 ////////////////// Table Stuff ////////////////////
 table.test-table{
   width:100%;
@@ -120,7 +150,7 @@ table.test-table{
   padding: 20px 15px;
   text-align: left;
   font-weight: 500;
-  font-size: 12px;
+  font-size: 14px;
   color: #337ab7;
   text-transform: uppercase;
 }
@@ -129,7 +159,71 @@ table.test-table{
   text-align: left;
   vertical-align:middle;
   font-weight: 300;
-  font-size: 12px;
+  font-size: 14px;
   color: #337ab7;
   border-bottom: solid 1px rgba(46, 109, 164, 0.1);
+}
+
+.test-table td a {
+  color: black;
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  border-left: solid 1px;
+}
+
+//////////////// Footer Area //////////////////
+.footer-distributed {
+    background-color: #0A1612;
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+    box-sizing: border-box;
+    width: 100%;
+    text-align: left;
+    padding: 55px 50px;
+    margin-top: 80px;
+    color: #fff;
+}
+.footer-distributed .footer-left {
+    width: 40%;
+}
+
+.footer-distributed .footer-left, .footer-distributed .footer-center, .footer-distributed .footer-right {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.footer-distributed .footer-links {
+    color: #000;
+    margin: 20px 0 12px;
+    padding: 0;
+}
+.footer-distributed .footer-center {
+    width: 35%;
+}
+
+.footer-center, .footer-distributed .footer-right {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.footer-distributed .footer-right {
+    width: 20%;
+}
+
+.footer-distributed .footer-right {
+    display: inline-block;
+    vertical-align: top;
+}
+
+///// Add Games CSS /////
+.team-details {
+  margin: 5px 0;
+}
+
+input:required {
+  box-shadow: 0 0 2px rgba(200, 0, 0, 0.85);
+}
+
+select:required {
+  box-shadow: 0 0 2px rgba(200, 0, 0, 0.85);
 }

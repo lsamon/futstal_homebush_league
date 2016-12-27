@@ -1,0 +1,6 @@
+// console.log($('#article_category_id option:selected').text());
+var selectedOption = $('#article_category_id option:selected').text();
+
+if(selectedOption === 'Main Content') {
+  $('.fp-main-content').text(<%= escape_javascript @article.content %>);
+}

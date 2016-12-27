@@ -1,3 +1,19 @@
-<h1>Home Page</h1>
-
-<%= @current_player.name if @current_player.present? %>
+<div class="container">
+  <div class="row">
+    <p> <%= @current_player.name if @current_player.present? %> </p>
+    <% if @main_article.present? %>
+      <div class="col-sm-9 col-md-6 col-lg-8 fp-main-content">
+        <h2><%= @main_article.title if @main_article %></h2>
+        <%= @main_article.content if @main_article %>
+      </div>
+    <% end %>
+    <% if @side_article.present? %>
+      <div class="col-sm-3 col-md-6 col-lg-4 fp-side-content">
+      <% @side_article.each do | sa | %>
+        <h2><%= sa.title %></h2>
+        <%= sa.content %>
+      <% end %>
+    <% end %>
+    </div>
+  </div>
+</div>

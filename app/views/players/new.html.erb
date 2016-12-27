@@ -10,14 +10,9 @@
   <% end %>
 
   <%= form_for @player do |f| %>
-    <%= f.label :email %>
-    <%= f.email_field :email, :class => 'form-control' %>
-
-    <%= f.label :password %>
-    <%= f.password_field :password, :class => 'form-control' %>
-
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation, :class => 'form-control' %>
+    <%= f.email_field :email, :class => 'form-control', :placeholder => 'email' %>
+    <%= f.password_field :password, :placeholder => 'password', :class => 'form-control' %>
+    <%= f.password_field :password_confirmation, :placeholder => 'password confirmation', :class => 'form-control' %>
 
     <%= f.submit 'Sign up!', :class => 'btn btn-primary' %>
   <% end %>

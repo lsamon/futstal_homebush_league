@@ -1,22 +1,28 @@
 <div class="game-fixtures">
   <h2>Game Fixtures</h2>
-  <% Division.all.each do |div| %>
-    <h2> Division <%= div.division_number %> </h2>
-    <table class="table table-sm table-hover table-inverse">
-      <% @fixtures.each do | game | %>
-        <% if game.team_a.division.division_number == game.team_b.division.division_number  && game.team_a.division.division_number == div.division_number%>
-          <tr>
-            <td><%= game.team_a.name %></td>
-            <td class="score"> - </td>
-            <td class="score"> - </td>
-            <td><%= game.team_b.name %></td>
-            <td><%= game.game_date.strftime("%d/%m/%y %H:%M") if game.game_date.present? %></td>
-            <td><%= link_to "Edit Game", edit_game_path(game.id) if @current_player && @current_player.admin? %> </td>
-            <td><%= link_to 'Delete Game', game, :method => 'delete' if @current_player && @current_player.admin? %></td>
-          </tr>
-          <% end %>
-      <% end %>
-    </table>
+  <% shown_title = false %>
+  <% if @fixtures.present? %>
+    <% Division.all.each do |div| %>
+      <table class="table table-sm table-hover table-inverse">
+        <% @fixtures.each do | game | %>
+          <% if game.team_a.division.division_number == div.division_number%>
+            <% unless shown_title %>
+              <h2> Division <%= div.division_number %> </h2>
+              <% shown_title = true %>
+            <% end %>
+            <tr>
+              <td><%= game.team_a.name %></td>
+              <td class="score"> - </td>
+              <td class="score"> - </td>
+              <td><%= game.team_b.name %></td>
+              <td><%= game.game_date.strftime("%d/%m/%y %H:%M") if game.game_date.present? %></td>
+              <td><%= link_to "Edit Game", edit_game_path(game.id) if @current_player && @current_player.admin? %> </td>
+              <td><%= link_to 'Delete Game', game, :method => 'delete' if @current_player && @current_player.admin? %></td>
+            </tr>
+            <% end %>
+        <% end %>
+      </table>
+    <% end %>
   <% end %>
 
   <% if @current_player.present? && @current_player.admin? %>

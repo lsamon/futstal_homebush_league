@@ -16,8 +16,20 @@ class Game < ActiveRecord::Base
   belongs_to :team_a, :class_name => 'Team', :foreign_key => 'team_a_id'
   belongs_to :team_b, :class_name => 'Team', :foreign_key => 'team_b_id'
 
-  scope :results, -> { where('team_a_score IS NOT null or team_b_score IS NOT null') }
-  scope :fixtures, -> { where('team_a_score IS null or team_b_score IS null') }
+  validates_presence_of :team_a, :team_b
+  # validates_numericality_of :team_a_score, :greater_than_or_equal_to => 0
+  # validates_numericality_of :team_b_score, :greater_than_or_equal_to => 0
+
+  scope :results, -> { where('game_date < ?', DateTime.now) }
+  scope :fixtures, -> { where('game_date > ?', DateTime.now) }
+
+  def same_team?
+    self.team_a == self.team_b
+  end
+
+  def same_division?
+    self.team_a.division_id == self.team_b.division_id
+  end
 
   def self.add_points(game)
     return if game.team_a_score.nil? || game.team_b_score.nil?
@@ -79,6 +91,18 @@ class Game < ActiveRecord::Base
       game.team_a.save
       game.team_b.save
     end
+  end
+
+  def reset_score
+    self.team_a_score = 0
+    self.team_b_score = 0
+    save
+  end
+
+  def update_score(score_a, score_b)
+    self.team_a_score = score_a
+    self.team_a_score = score_a
+    save
   end
 
   def self.count_game(team_id)

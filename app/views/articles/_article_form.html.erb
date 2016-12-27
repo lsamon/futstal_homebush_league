@@ -1,0 +1,11 @@
+<%= form_for @article do | f | %>
+  <%= f.label 'Title' %>
+  <%= f.text_field :title %>
+  <br>
+  <%= f.label 'Content' %>
+  <%= f.text_area :content %>
+  <br>
+    <%= f.select :category_id, Category.pluck(:name, :id), {:prompt => 'Select Category'}, {:class => 'form-control selectpicker' } %>
+  <br>
+  <%= f.submit :class => 'btn btn-primary' %>
+<% end %>

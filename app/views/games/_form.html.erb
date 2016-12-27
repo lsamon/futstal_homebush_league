@@ -1,17 +1,21 @@
 <%= form_for @game, :html => {:class => 'form-inline'} do | f | %>
-    <%= f.select :team_a_id, Team.pluck(:name, :id), {:prompt => 'Select Team'}, {:class => 'form-control selectpicker' } %>
+  <div class="team-details">
+    <%= f.select :team_a_id, Team.pluck(:name, :id), {:prompt => 'Select Team'}, {:class => 'form-control selectpicker', :required => true} %>
     <%= f.text_field :team_a_score, :class => 'form-control', :placeholder => 'score', :maxlength => 5 %>
+  </div>
 
-    <%= f.select :team_b_id, Team.pluck(:name, :id), {:prompt => 'Select Team'}, {:class => 'form-control selectpicker'} %>
+  <div class="team-details">
+    <%= f.select :team_b_id, Team.pluck(:name, :id), {:prompt => 'Select Team'}, {:class => 'form-control selectpicker', :required => true} %>
     <%= f.text_field :team_b_score, :class => 'form-control', :placeholder => 'score', :maxlength => 5 %>
+  </div>
 
-     <div class='input-group date gamedate'>
-      <%= f.datetime_field :game_date, :class => 'form-control', :placeholder => 'pick date' %>
+   <div class='input-group date gamedate'>
+    <%= f.datetime_field :game_date, :class => 'form-control', :placeholder => 'pick date', :required => true %>
 
-      <span class="input-group-addon">
-        <span class="glyphicon glyphicon-calendar"></span>
-      </span>
-    </div>
-
+    <span class="input-group-addon">
+      <span class="glyphicon glyphicon-calendar"></span>
+    </span>
+  </div>
+    <br><br>
   <%= f.submit :class => 'btn btn-primary'%>
 <% end %>

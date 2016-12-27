@@ -17,10 +17,10 @@ d2 = Division.create :division_number => 2
 d3 = Division.create :division_number => 3
 
 Game.destroy_all
-g1 = Game.create :team_a_id => Team.all[0].id, :team_a_score => 3, :team_b_id => Team.all[1].id, :team_b_score => 0
-g2 = Game.create :team_a_id => Team.all[0].id, :team_a_score => 5, :team_b_id => Team.all[2].id, :team_b_score => 5
-g3 = Game.create :team_a_id => Team.all[1].id, :team_a_score => 1, :team_b_id => Team.all[3].id, :team_b_score => 4
-g4 = Game.create :team_a_id => Team.all[2].id, :team_a_score => 9, :team_b_id => Team.all[3].id, :team_b_score => 2
+g1 = Game.create :team_a_id => Team.all[0].id, :team_a_score => 3, :team_b_id => Team.all[1].id, :team_b_score => 0, :played => true
+g2 = Game.create :team_a_id => Team.all[0].id, :team_a_score => 5, :team_b_id => Team.all[2].id, :team_b_score => 5, :played => true
+g3 = Game.create :team_a_id => Team.all[1].id, :team_a_score => 1, :team_b_id => Team.all[3].id, :team_b_score => 4, :played => true
+g4 = Game.create :team_a_id => Team.all[2].id, :team_a_score => 9, :team_b_id => Team.all[3].id, :team_b_score => 2, :played => true
 
 t1.players << p1 << p2
 t2.players << p3

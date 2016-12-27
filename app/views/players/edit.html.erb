@@ -1,40 +1,40 @@
 <h1>User info</h1>
-<%= form_for(@player, :html => {:multipart => true}) do |f| %>
-  <p>
+<%= form_for(@player, :html => {:multipart => true},) do |f| %>
+  <div class="form-inline">
     <%= f.label :name %>
-    <%= f.text_field :name %>
-  </p>
-
-  <p>
+    <%= f.text_field :name, :class => 'form-control' %>
+  </div>
+  <div class="form-inline">
     <%= f.label :email %>
-    <%= f.text_field :email %>
-  </p>
+    <%= f.text_field :email, :class => 'form-control' %>
+  </div>
 
-  <p>
+  <div class="form-inline">
     <%= f.label :dob %>
-    <%= f.text_field :dob %>
-  </p>
-  <p>
+    <%= f.text_field :dob, :class => 'form-control' %>
+  </div>
+
+  <div class="form-inline">
     <%= f.label :password %>
-    <%= f.password_field :password %>
-  </p>
+    <%= f.password_field :password, :class => 'form-control' %>
+  </div>
 
-  <p>
+  <div class="form-inline">
     <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation %>
-  </p>
+    <%= f.password_field :password_confirmation, :class => 'form-control' %>
+  </div>
 
-  <p>
+  <div class="form-inline">
     <%= f.label :image %>
-    <%= f.cl_image_upload :image %>
-  </p>
+    <%= f.cl_image_upload :image, :class => 'form-control' %>
+  </div>
 
-  <p>
+  <div class="form-inline">
     <%= f.label :team_id %>
-    <%= f.select :team_id, Team.pluck(:name, :id), :prompt => 'Select Team' %>
-  </p>
+    <%= f.select :team_id, Team.pluck(:name, :id), {:prompt => 'Select Team'}, {:class => 'form-control'} %>
+  </div>
 
 
-  <%= f.submit %>
+  <%= f.submit :class => 'btn btn-primary'%>
 
 <% end %>
