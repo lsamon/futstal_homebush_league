@@ -1,10 +1,8 @@
 $(document).ready(function(){
 
-  $('#article_content').wysihtml5();
-
   $('.gamedate').datetimepicker({
-      format: 'yyyy-mm-dd hh:ii'
-    });
+      format: 'YYYY-MM-DD HH:mm:ss'
+  });
 
   $('.add_game').click(function(){
     var $form = $('.game_fields').html();

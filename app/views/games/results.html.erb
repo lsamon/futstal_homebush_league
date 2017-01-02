@@ -10,7 +10,7 @@
           <td><%= game.team_b.name %></td>
           <% if @current_player.present? && @current_player.admin? %>
             <td><%= link_to "Edit Game", edit_game_path(game.id) %></td>
-            <td><%= link_to "Delete Game", games_results_path, method: 'delete' %></td>
+            <td><%= button_to "Delete Game", delete_game_path(game.id), method: 'delete' %></td>
             <% end %>
         </tr>
       <% end %>

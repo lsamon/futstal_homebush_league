@@ -43,13 +43,15 @@ Rails.application.routes.draw do
 
   root :to => 'pages#home'
   get '/players/edit' => 'players#edit', :as => 'edit_player'
+
+  delete '/games/:id' => 'games#destroy', :as => 'delete_game'
   get '/games/fixtures' => 'games#fixtures'
   get '/games/results' => 'games#results'
 
   resources :players, :only => [:index, :new, :create, :show, :edit, :update]
   resources :teams
   resources :divisions
-  resources :games
+  resources :games, :except => [:destroy]
   resources :articles
 
   get '/login' => 'session#new'

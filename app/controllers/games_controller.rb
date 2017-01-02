@@ -27,25 +27,14 @@ class GamesController < ApplicationController
   def create
     @game = Game.new game_params
 
-    # binding.pry
-    team_a = Team.find params[:game][:team_a_id]
-    team_b = Team.find params[:game][:team_b_id]
-
-    # binding.pry
-
     team_a_score = params[:game][:team_a_score]
     team_b_score = params[:game][:team_b_score]
 
     scores = update_goals(team_a_score, team_b_score)
     if scores.present?
-      team_a.subtract_goals_against(team_b_score)
-      team_b.subtract_goals_against(team_a_score)
-
-      # Adding the new figures
-      team_a.add_goals_for(team_a_score)
-      team_b.add_goals_for(team_b_score)
-
-      Game.add_points(@game)
+      @game.add_goals_for(scores[:a], scores[:b])
+      @game.add_goals_against(scores[:a], scores[:b])
+      @game.add_points(scores[:a], scores[:b])
     end
 
     validate_game(@game)
@@ -66,19 +55,19 @@ class GamesController < ApplicationController
     team_a = game.team_a
     team_b = game.team_b
 
-    new_score_a = params[:game][:team_a_score]
-    new_score_b = params[:game][:team_b_score]
+    new_score_a = params[:game][:team_a_score].to_i
+    new_score_b = params[:game][:team_b_score].to_i
 
     if new_score_a.present? && new_score_b.present?
       # Deduct current Team goals for with the games current score
-      team_a.subtract_goals(new_score_a,new_score_b)
-      team_b.subtract_goals(new_score_b,new_score_a)
+      game.subtract_goals_against(game.team_a_score, game.team_b_score)
+      game.subtract_goals_for(game.team_a_score, game.team_b_score)
 
       # Adding the new figures
-      team_a.add_goals(new_score_a,team_b_score)
-      team_b.add_goals(team_b_score,team_a_score)
+      game.add_goals_for(new_score_a, new_score_b)
+      game.add_goals_against(new_score_a, new_score_b)
 
-      Game.edit_points(game, team_a_score, team_b_score)
+      game.edit_points(new_score_a, new_score_b)
       game.update game_params
     end
 
@@ -89,9 +78,11 @@ class GamesController < ApplicationController
 
   def destroy
     game = Game.find params[:id]
+    game.clean_before_destroy
+
     game.destroy
 
-    redirect_to games_fixtures_path
+    redirect_to games_results_path
   end
 
   private
@@ -106,25 +97,25 @@ class GamesController < ApplicationController
   end
 
   def validate_game(game)
-    if game.same_team? == false
+    if game.same_team?
+      @err_message = "Error! Team cannot play itself!!"
+    else
       if game.same_division?
         if game.save
-          flash[:notice] = "Game was created Successfully"
+          flash[:notice] = "Game was created successfully"
           redirect_to new_game_path
         end
       else
         @err_message = "Error! Teams in different divisions cannot be matched!! Check Divisions menu to match teams"
       end
-    else
-      @err_message = "Error! Team cannot play itself!!"
     end
   end
 
   def update_goals(a, b)
     scores = Hash.new 0
     unless a.nil? && b.nil?
-      scores[:score_a] = a.to_i
-      scores[:score_b] = b.to_i
+      scores[:a] = a.to_i
+      scores[:b] = b.to_i
 
       scores
     end

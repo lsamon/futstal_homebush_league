@@ -12,6 +12,7 @@ class TeamsController < ApplicationController
 
   def index
     @teams = Team.all
+    console
   end
 
   def show

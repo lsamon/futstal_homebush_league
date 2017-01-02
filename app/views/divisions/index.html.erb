@@ -21,7 +21,7 @@
                 <td><%= team.games.count %></td>
                 <td><%= team.goals_for %></td>
                 <td><%= team.goals_against %></td>
-                <td><%= team.goals_for - team.goals_against unless team.goals_for.nil? && team.goals_against.nil? %></td>
+                <td><%= team.goal_difference unless team.goal_difference.nil? %></td>
                 <td><%= team.points %></td>
               </tr>
         <% end %>

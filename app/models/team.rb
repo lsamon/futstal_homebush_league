@@ -10,6 +10,11 @@
 #
 
 class Team < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :name, :use => [:slugged, :finders]
+
+  before_save :update_goal_difference
+
   belongs_to :division
   has_many :players
   has_many :games, dependent: :destroy
@@ -18,13 +23,28 @@ class Team < ActiveRecord::Base
     Game.where('games.team_a_id = ? OR games.team_b_id = ?', id, id)
   end
 
-  def add_goals_for(new_score)
-    self.goals_for += new_score.to_i
+  def update_goal_difference
+    self.goal_difference = self.goals_for - self.goals_against
+  end
+
+  def add_win_points
+    self.points += 3
     save
   end
 
-  def subtract_goals_against(new_score)
-    self.goals_against -= new_score.to_i
+  def subtract_win_points
+    self.points -= 3
     save
   end
+
+  def add_draw_points
+    self.points += 1
+    save
+  end
+
+  def subtract_draw_points
+    self.points -= 1
+    save
+  end
+
 end

@@ -31,73 +31,41 @@ class Game < ActiveRecord::Base
     self.team_a.division_id == self.team_b.division_id
   end
 
-  def self.add_points(game)
-    return if game.team_a_score.nil? || game.team_b_score.nil?
-    if game.team_a_score > game.team_b_score
-      game.team_a.points += 3
+  def add_points(score_a, score_b)
+    return if score_a.nil? || score_b.nil?
+    if score_a > score_b
+      self.team_a.points += 3
       # raise 'a wins'
-    elsif game.team_a_score < game.team_b_score
-      game.team_b.points += 3
-      # raise 'b wins'
+    elsif score_a < score_b
+      self.team_b.points += 3
 
     else
-      game.team_a.points += 1
-      game.team_b.points += 1
-      # raise 'draw wins'
+      self.team_a.points += 1
+      self.team_b.points += 1
 
     end
-    game.team_a.save
-    game.team_b.save
+    self.team_a.save
+    self.team_b.save
   end
 
-  def self.edit_points(game, new_score_a, new_score_b)
+  def subtract_points(score_a, score_b)
+    if score_a > score_b
+      self.team_a.points -= 3
+    elsif score_a < score_b
+      self.team_b.points -= 3
+    else
+      self.team_a.points -= 1
+      self.team_b.points -= 1
+    end
+    self.team_a.save
+    self.team_b.save
+  end
+
+  def edit_points(new_score_a, new_score_b)
       return if new_score_a.nil? || new_score_b.nil?
-      if new_score_a > new_score_b && game.team_a_score < game.team_b_score
-        game.team_a.points += 3
-        game.team_b.points -= 3
-        # raise 'a wins'
-      elsif new_score_a < new_score_b && game.team_a_score > game.team_b_score
-        game.team_b.points += 3
-        game.team_a.points -= 3
-        # raise 'b wins'
-
-      elsif new_score_a == new_score_b && game.team_a_score < game.team_b_score
-        game.team_a.points += 1
-        game.team_b.points -= 2
-        # raise 'draw wins'
-      elsif new_score_a == new_score_b && game.team_a_score > game.team_b_score
-        game.team_a.points -= 2
-        game.team_b.points += 1
-      else
-        game.team_a.points -= 0
-        game.team_b.points += 0
-      end
-      game.team_a.save
-      game.team_b.save
+      self.subtract_points(self.team_a_score, self.team_b_score)
+      self.add_points(new_score_a, new_score_b)
     end
-
-
-  # this method is just to initialise the points correctly after seeding
-  def self.add_current_points
-    Game.all.each do |game|
-      if game.team_a_score > game.team_b_score
-        game.team_a.points += 3
-      elsif game.team_b_score > game.team_b_score
-        game.team_b.points += 3
-      else
-        game.team_a.points += 1
-        game.team_b.points += 1
-      end
-      game.team_a.save
-      game.team_b.save
-    end
-  end
-
-  def reset_score
-    self.team_a_score = 0
-    self.team_b_score = 0
-    save
-  end
 
   def update_score(score_a, score_b)
     self.team_a_score = score_a
@@ -109,52 +77,37 @@ class Game < ActiveRecord::Base
     (Game.where("team_a_score IS NOT null and team_a_id = #{team_id} or team_b_score IS NOT null and team_b_id = #{team_id}")).count
   end
 
-  def self.count_goals(team_id)
-    games_per_team = Game.where{(team_a_id == team_id) | (team_b_id == team_id)}
-
-    goals_for = 0
-    goals_against = 0
-
-    for_against = Hash.new 0
-
-    games_per_team.each do |t|
-      if t.team_a_id == team_id
-        goals_for += t.team_a_score unless t.team_a_score.nil?
-        goals_against += t.team_b_score unless t.team_b_score.nil?
-      elsif t.team_b_id == team_id
-        goals_for += t.team_b_score unless t.team_b_score.nil?
-        goals_against += t.team_a_score unless t.team_a_score.nil?
-      else
-      end
-    end
-
-    for_against[:for] = goals_for
-    for_against[:against] = goals_against
-    for_against
-  end
-
-  def clean_before_destroy(game)
-    if game.team_a_score.present? && game.team_b_score.present?
+  def clean_before_destroy
+    if self.team_a_score.present? && self.team_b_score.present?
       # Reduce number of goals
-      game.team_a.goals_for -= game.team_a_score
-      game.team_a.goals_against -= game.team_b_score
-
-      game.team_b.goals_for -= game.team_b_score
-      game.team_b.goals_against -= game.team_a_score
+      self.subtract_goals_for(self.team_a_score, self.team_b_score)
+      self.subtract_goals_against(self.team_a_score, self.team_b_score)
 
       #reduce points
+      self.subtract_points(self.team_a_score, self.team_b_score)
 
-      if game.team_a.score > game.team_b.score
-        game.team_a.points -= 3
-      elsif game.team_a.score < game.team_b.score
-        game.team_b.points -= 3
-      else
-        game.team_a.points -= 1
-        game.team_b.points -= 1
-      end
-      game.team_a.save
-      game.team_b.save
     end
+  end
+
+
+  def add_goals_for(new_score_a, new_score_b)
+    self.team_a.goals_for += new_score_a
+    self.team_b.goals_for += new_score_b
+  end
+
+  def subtract_goals_for(new_score_a, new_score_b)
+    self.team_a.goals_for -= new_score_a
+    self.team_b.goals_for -= new_score_b
+  end
+
+  def add_goals_against(new_score_a, new_score_b)
+    self.team_a.goals_against += new_score_b
+    self.team_b.goals_against += new_score_a
+  end
+
+  def subtract_goals_against(new_score_a, new_score_b)
+    self.team_a.goals_against -= new_score_b
+    self.team_b.goals_against -= new_score_a
   end
 
 end
