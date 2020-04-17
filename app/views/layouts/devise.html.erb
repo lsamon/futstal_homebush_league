@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Futsal Homebush League</title>
+    <%= stylesheet_link_tag "https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" %>
+    <%= stylesheet_link_tag "application", media: "all" %>
+    <%= javascript_include_tag "https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" %>
+    <%= javascript_include_tag "application" %>
+
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body>
+    <div class="container-fluid">
+      <nav class="navbar navbar-dark bg-dark">
+        <%= link_to 'Home', root_path, class: "navbar-brand" %>
+      </nav>
+
+      <%= yield %>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,29 @@
+<div class="card mb-4">
+  <div class="row">
+    <div class="col-sm-12 float-right">
+      <%= link_to "Add Team", new_admin_center_team_path, class: "btn btn-primary float-right"%>
+    </div>
+  </div>
+	<div class="card-header"><i class="fas fa-table mr-1"></i>All teams</div>
+	<div class="card-body">
+    <div class="table-responsive">
+      <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Division</th>
+            <th>Number of players</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+  				<% @teams.each do |team| %>
+  					<tr>
+  						<%= render partial: "team", locals: { team: team } %>
+  					</tr>
+  				<% end %>
+        </tbody>
+      </table>
+    </div>
+	</div>
+</div>

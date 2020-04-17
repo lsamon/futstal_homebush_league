@@ -1,24 +1,39 @@
-Player.destroy_all
-p1 = Player.create :email => 'loui.amon@gmail.com', :name => 'Louis Amon', :password => 'chicken', :password_confirmation => 'chicken', :admin => true
-p2 = Player.create :email => 'atil.selik@gmail.com', :name => 'Atil Selik', :password => 'chicken', :password_confirmation => 'chicken'
-p3 = Player.create :email => 'cedric.roux@gmail.com', :name => 'Cedric Roux', :password => 'chicken', :password_confirmation => 'chicken'
-p4 = Player.create :email => 'fu.amon@gmail.com', :name => 'Fu Amon', :password => 'chicken', :password_confirmation => 'chicken'
+DatabaseCleaner.clean_with :truncation, except: %w(ar_internal_metadata)
 
-Team.destroy_all
-t1 = Team.create :name => 'United Nations', :points => 0
-t2 = Team.create :name => 'Sweet and Sour', :points => 0
-t3 = Team.create :name => 'Luking Good', :points => 0
-t4 = Team.create :name => 'National Joel Appreciation Club', :points => 0
+players = [
+	{ email: 'loui.amon@gmail.com', name: 'Louis Amon', password: 'chicken', password_confirmation: 'chicken', role: :player, status: :active }
+	{ email: 'atil.selik@gmail.com', name: 'Atil Selik', password: 'chicken', password_confirmation: 'chicken', role: :player, status: :active }
+	{ email: 'cedric.roux@gmail.com', name: 'Cedric Roux', password: 'chicken', password_confirmation: 'chicken', role: :player, status: :active }
+	{ email: 'fu.amon@gmail.com', name: 'Fu Amon', password: 'chicken', password_confirmation: 'chicken', role: :player, status: :active }
+]
 
+puts "Create players"
+Player.create!(players)
 
-Division.destroy_all
-d1 = Division.create :division_number => 1
-d2 = Division.create :division_number => 2
-d3 = Division.create :division_number => 3
+teams = [
+ { name: 'United Nations' }
+ { name: 'Sweet and Sour' }
+ { name: 'Luking Good' }
+ { name: 'National Joel Appreciation Club' }
+]
 
-t1.players << p1 << p2
-t2.players << p3
-t3.players << p4
+puts "Create Teams"
+Team.create!(teams)
 
-d1.teams << t3 << t4
-d2.teams << t1 << t2
+divisions = [
+	{ number: 1, name: "One" },
+	{ number: 2, name: "Two" },
+	{ number: 3, name: "Three" },
+	{ number: 4, name: "Four" },
+	{ number: 5, name: "Five" }
+]
+
+puts "Create Divisions"
+Division.create!(divisions)
+
+def add_players_to_teams
+
+end
+
+def add_teams_to_divisions
+end

@@ -1,0 +1,13 @@
+<div class="col-lg-4 col-md-4 col-xs-12 user-form">
+  <h2>Sign In</h2>
+
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="form-group">
+      <%= f.text_field :email, placeholder: "jim@example.com", class: "form-control" %>
+      <%= f.password_field :password, class: "form-control" %>
+      <%= f.submit "Log in", class: 'btn btn-primary' %>
+    </div>
+  <% end %>
+  <p>Don't have an account?</p>
+  <%= render "devise/shared/links" %>
+</div>

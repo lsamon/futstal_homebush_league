@@ -1,0 +1,13 @@
+current directory: /home/louis/projects/futsal_homebush_league/vendor/bundle/ruby/2.5.0/gems/json-1.8.6/ext/json
+/home/louis/.rbenv/versions/2.5.8/bin/ruby -r ./siteconf20200408-5020-s4o98w.rb extconf.rb
+creating Makefile
+
+current directory: /home/louis/projects/futsal_homebush_league/vendor/bundle/ruby/2.5.0/gems/json-1.8.6/ext/json
+make "DESTDIR=" clean
+
+current directory: /home/louis/projects/futsal_homebush_league/vendor/bundle/ruby/2.5.0/gems/json-1.8.6/ext/json
+make "DESTDIR="
+make: Nothing to be done for 'all'.
+
+current directory: /home/louis/projects/futsal_homebush_league/vendor/bundle/ruby/2.5.0/gems/json-1.8.6/ext/json
+make "DESTDIR=" install

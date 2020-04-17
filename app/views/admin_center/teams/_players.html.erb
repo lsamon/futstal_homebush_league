@@ -1,0 +1,28 @@
+<div class="row mb-4 mt-4">
+  <div class="col-md-4">
+    <%= form_for @team, url: admin_center_team_add_player_path(@team), method: :patch do |f| %>
+      <div class="form-group">
+        <%= f.label :player_ids, "Players", class: "small mb-1" %>
+        <%= f.select :player_ids, @other_players.map { |player| [player.name, player.id] }, { prompt: "Select Team" }, { class: "form-control" } %>
+      </div>
+      <%= f.submit "Add Player" %>
+    <% end %>
+  </div>
+</div>
+<div class="table-responsive">
+  <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th colspan="2" class="text-center">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @players.each do |player| %>
+        <tr>
+          <%= render partial: "player", locals: { player: player } %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

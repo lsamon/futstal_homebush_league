@@ -1,50 +1,11 @@
-# == Schema Information
-#
-# Table name: teams
-#
-#  id          :integer          not null, primary key
-#  name        :text
-#  division_id :integer
-#  created_at  :datetime         not null
-#  updated_at  :datetime         not null
-#
+# frozen_string_literal: true
 
 class Team < ActiveRecord::Base
-  extend FriendlyId
-  friendly_id :name, :use => [:slugged, :finders]
+  belongs_to :division, counter_cache: true
+  has_many   :players
+  has_many	 :match_stats, class_name: "TeamMatchStat"
+  has_many	 :matches, through: :match_stats
+  has_one    :season_stat, class_name: "TeamSeasonStat"
 
-  before_save :update_goal_difference
-
-  belongs_to :division
-  has_many :players
-  has_many :games, dependent: :destroy
-
-  def games
-    Game.where('games.team_a_id = ? OR games.team_b_id = ?', id, id)
-  end
-
-  def update_goal_difference
-    self.goal_difference = self.goals_for - self.goals_against
-  end
-
-  def add_win_points
-    self.points += 3
-    save
-  end
-
-  def subtract_win_points
-    self.points -= 3
-    save
-  end
-
-  def add_draw_points
-    self.points += 1
-    save
-  end
-
-  def subtract_draw_points
-    self.points -= 1
-    save
-  end
-
+  validates :name, presence: true
 end

@@ -10,6 +10,12 @@ require "action_mailer/railtie"
 require "action_view/railtie"
 require "sprockets/railtie"
 # require "rails/test_unit/railtie"
+require "dotenv/load"
+
+begin
+  require "factory_bot_rails"
+rescue LoadError
+end
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -31,5 +37,17 @@ module FutsalHomebushLeague
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    config.autoload_paths << Rails.root.join("app", "interactors", "**")
+
+    config.assets.paths << Rails.root.join('node_modules')
+
+    config.to_prepare do
+      Devise::SessionsController.layout "devise"
+      Devise::RegistrationsController.layout "devise"   
+    end
+
+    config.factory_bot.definition_file_paths +=
+      [File.expand_path('../factories', __FILE__)] if defined?(FactoryBotRails)
   end
 end

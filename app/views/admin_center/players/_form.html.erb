@@ -1,0 +1,38 @@
+<%= form_for @player, url: admin_center_players_path do |f| %>
+  <div class="form-group">
+    <%= f.label :first_name, class: "small mb-1" %>
+    <%= f.text_field :first_name, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :last_name, class: "small mb-1" %>
+    <%= f.text_field :last_name, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :email, class: "small mb-1" %>
+    <%= f.text_field :email, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :date_of_birth, class: "small mb-1" %>
+    <%= f.date_field :date_of_birth, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :team_id, class: "small mb-1" %>
+    <%= f.select :team_id, Team.pluck(:name, :id), {:prompt => 'Select Team'}, { class: "form-control" } %>
+  </div>
+
+    <div class="form-group">
+	    <%= f.label :password, class: "small mb-1" %>
+	    <%= f.password_field :password, class: "form-control" %>
+	  </div>
+
+    <div class="form-group">
+	    <%= f.label :password_confirmation, class: "small mb-1" %>
+	    <%= f.password_field :password_confirmation, class: "form-control" %>
+	  </div>
+  
+  <%= f.submit %>
+<% end %>

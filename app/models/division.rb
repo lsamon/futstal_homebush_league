@@ -1,14 +1,6 @@
-# == Schema Information
-#
-# Table name: divisions
-#
-#  id              :integer          not null, primary key
-#  division_number :integer
-#  created_at      :datetime         not null
-#  updated_at      :datetime         not null
-#
+# frozen_string_literal: true
 
 class Division < ActiveRecord::Base
-  has_many :teams
-  has_many :players, :through => :teams
+	has_many :teams
+	has_many :team_season_stats
 end

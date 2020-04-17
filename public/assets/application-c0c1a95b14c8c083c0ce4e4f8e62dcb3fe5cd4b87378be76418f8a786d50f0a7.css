@@ -1,0 +1,272 @@
+/* line 1, /home/louis/projects/futsal_homebush_league/app/assets/stylesheets/application.scss */
+html {
+  /* Size of largest container or bigger */
+  min-width: 1080px;
+}
+
+/* line 6, /home/louis/projects/futsal_homebush_league/app/assets/stylesheets/application.scss */
+header {
+  background-color: #1A2930;
+  margin-top: -10px;
+}
+
+/* line 11, /home/louis/projects/futsal_homebush_league/app/assets/stylesheets/application.scss */
+.page-header {
+  height: 70px;
+  line-height: 70px;
+  max-width: 1120px;
+  margin: 0 auto;
+  border-bottom: none;
+}
+
+/* line 19, /home/louis/projects/futsal_homebush_league/app/assets/stylesheets/application.scss */
+nav {
+  text-align: left;
+}
+
+/* line 23, /home/louis/projects/futsal_homebush_league/app/assets/stylesheets/application.scss */
+nav a {
+  color: white;
+  text-decoration: none;
+}
+
+/* line 28, /home/louis/projects/futsal_homebush_league/app/assets/stylesheets/application.scss */
+nav li {
+  font-size: 16px;
+  padding: 0 15px;
+}
+
+/* line 33, /home/louis/projects/futsal_homebush_league/app/assets/stylesheets/application.scss */
+.menu-nav {
+  display: inline-block;
+  max-width: 600px;
+  float: left;
+}
+
+/* line 39, /home/louis/projects/futsal_homebush_league/app/assets/stylesheets/application.scss */
+.menu-nav li {
+  display: inline-block;
+  text-decoration: none;
+}
+
+/* line 44, /home/louis/projects/futsal_homebush_league/app/assets/stylesheets/application.scss */
+.menu-user-nav {
+  display: inline-block;
+  max-width: 300px;
+  float: right;
+}
+
+/* line 50, /home/louis/projects/futsal_homebush_league/app/assets/stylesheets/application.scss */
+.menu-user-nav li {
+  display: inline-block;
+}
+
+/* line 54, /home/louis/projects/futsal_homebush_league/app/assets/stylesheets/application.scss */
+.container {
+  padding: 10px;
+}
+
+/* line 58, /home/louis/projects/futsal_homebush_league/app/assets/stylesheets/application.scss */
+.container h2 {
+  padding-left: 10px;
+}
+
+/* line 62, /home/louis/projects/futsal_homebush_league/app/assets/stylesheets/application.scss */
+.user-form {
+  float: none;
+  margin: 50px auto;
+  border: 5px solid rgba(46, 109, 164, 0.3);
+  border-radius: 5px;
+  padding: 25px;
+  text-align: center;
+}
+
+/* line 71, /home/louis/projects/futsal_homebush_league/app/assets/stylesheets/application.scss */
+#banner img {
+  width: 100%;
+  height: 400px;
+}
+
+/* line 76, /home/louis/projects/futsal_homebush_league/app/assets/stylesheets/application.scss */
+.divisions {
+  margin-left: 30px;
+}
+
+/* line 80, /home/louis/projects/futsal_homebush_league/app/assets/stylesheets/application.scss */
+.table {
+  max-width: 500px;
+}
+
+/* line 84, /home/louis/projects/futsal_homebush_league/app/assets/stylesheets/application.scss */
+.table-inverse {
+  color: #eceeef;
+  background-color: #373a3c;
+}
+
+/* line 88, /home/louis/projects/futsal_homebush_league/app/assets/stylesheets/application.scss */
+.table-inverse td {
+  border-color: #55595c;
+}
+
+/* line 92, /home/louis/projects/futsal_homebush_league/app/assets/stylesheets/application.scss */
+.table-inverse tr:hover, td:hover {
+  color: #373a3c;
+  background-color: #eceeef;
+}
+
+/* line 97, /home/louis/projects/futsal_homebush_league/app/assets/stylesheets/application.scss */
+.table-inverse td.score {
+  color: #373a3c;
+  background-color: #eceeef;
+  text-align: center;
+}
+
+/* line 104, /home/louis/projects/futsal_homebush_league/app/assets/stylesheets/application.scss */
+.new_game_form {
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+/* line 109, /home/louis/projects/futsal_homebush_league/app/assets/stylesheets/application.scss */
+.add_game {
+  margin-top: 10px !important;
+  margin-bottom: 10px !important;
+}
+
+/* line 114, /home/louis/projects/futsal_homebush_league/app/assets/stylesheets/application.scss */
+.thumb img {
+  width: 150px;
+}
+
+/* line 118, /home/louis/projects/futsal_homebush_league/app/assets/stylesheets/application.scss */
+.user-form .form-control {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+/* line 122, /home/louis/projects/futsal_homebush_league/app/assets/stylesheets/application.scss */
+.user-form .btn-primary {
+  width: 100%;
+}
+
+/* line 126, /home/louis/projects/futsal_homebush_league/app/assets/stylesheets/application.scss */
+label {
+  width: 150px;
+  text-align: right;
+}
+
+/* line 131, /home/louis/projects/futsal_homebush_league/app/assets/stylesheets/application.scss */
+table.test-table {
+  width: 100%;
+  table-layout: fixed;
+}
+
+/* line 135, /home/louis/projects/futsal_homebush_league/app/assets/stylesheets/application.scss */
+.tbl-header {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* line 138, /home/louis/projects/futsal_homebush_league/app/assets/stylesheets/application.scss */
+.tbl-content {
+  overflow-x: auto;
+  margin-top: 0px;
+  border: 1px solid rgba(46, 109, 164, 0.3);
+  border-radius: 5px;
+}
+
+/* line 145, /home/louis/projects/futsal_homebush_league/app/assets/stylesheets/application.scss */
+.test-table th {
+  padding: 20px 15px;
+  text-align: left;
+  font-weight: 500;
+  font-size: 14px;
+  color: #337ab7;
+  text-transform: uppercase;
+}
+
+/* line 153, /home/louis/projects/futsal_homebush_league/app/assets/stylesheets/application.scss */
+.test-table td {
+  padding: 15px;
+  text-align: left;
+  vertical-align: middle;
+  font-weight: 300;
+  font-size: 14px;
+  color: #337ab7;
+  border-bottom: solid 1px rgba(46, 109, 164, 0.1);
+}
+
+/* line 163, /home/louis/projects/futsal_homebush_league/app/assets/stylesheets/application.scss */
+.test-table td a {
+  color: black;
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  border-left: solid 1px;
+}
+
+/* line 172, /home/louis/projects/futsal_homebush_league/app/assets/stylesheets/application.scss */
+.footer-distributed {
+  background-color: #0A1612;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+  box-sizing: border-box;
+  width: 100%;
+  text-align: left;
+  padding: 55px 50px;
+  margin-top: 80px;
+  color: #fff;
+}
+
+/* line 182, /home/louis/projects/futsal_homebush_league/app/assets/stylesheets/application.scss */
+.footer-distributed .footer-left {
+  width: 40%;
+}
+
+/* line 186, /home/louis/projects/futsal_homebush_league/app/assets/stylesheets/application.scss */
+.footer-distributed .footer-left, .footer-distributed .footer-center, .footer-distributed .footer-right {
+  display: inline-block;
+  vertical-align: top;
+}
+
+/* line 191, /home/louis/projects/futsal_homebush_league/app/assets/stylesheets/application.scss */
+.footer-distributed .footer-links {
+  color: #000;
+  margin: 20px 0 12px;
+  padding: 0;
+}
+
+/* line 196, /home/louis/projects/futsal_homebush_league/app/assets/stylesheets/application.scss */
+.footer-distributed .footer-center {
+  width: 35%;
+}
+
+/* line 200, /home/louis/projects/futsal_homebush_league/app/assets/stylesheets/application.scss */
+.footer-center, .footer-distributed .footer-right {
+  display: inline-block;
+  vertical-align: top;
+}
+
+/* line 205, /home/louis/projects/futsal_homebush_league/app/assets/stylesheets/application.scss */
+.footer-distributed .footer-right {
+  width: 20%;
+}
+
+/* line 209, /home/louis/projects/futsal_homebush_league/app/assets/stylesheets/application.scss */
+.footer-distributed .footer-right {
+  display: inline-block;
+  vertical-align: top;
+}
+
+/* line 215, /home/louis/projects/futsal_homebush_league/app/assets/stylesheets/application.scss */
+.team-details {
+  margin: 5px 0;
+}
+
+/* line 219, /home/louis/projects/futsal_homebush_league/app/assets/stylesheets/application.scss */
+input:required {
+  box-shadow: 0 0 2px rgba(200, 0, 0, 0.85);
+}
+
+/* line 223, /home/louis/projects/futsal_homebush_league/app/assets/stylesheets/application.scss */
+select:required {
+  box-shadow: 0 0 2px rgba(200, 0, 0, 0.85);
+}

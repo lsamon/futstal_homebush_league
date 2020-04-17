@@ -1,0 +1,23 @@
+<nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
+  <div class="sb-sidenav-menu">
+    <div class="nav">
+      <%= link_to(admin_center_root_path, class: "nav-link") do %>
+        <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+        Dashboard
+      <% end %>
+      <div class="sb-sidenav-menu-heading">Settings</div>
+      <%= link_to(admin_center_teams_path, class: "nav-link") do %>
+        <div class="sb-nav-link-icon"><i class="fas fa-users"></i></div>
+        Teams
+      <% end %>
+      <%= link_to(admin_center_players_path, class: "nav-link") do %>
+        <div class="sb-nav-link-icon"><i class="fas fa-user"></i></div>
+        Players
+      <% end %>
+    </div>
+  </div>
+  <div class="sb-sidenav-footer">
+    <div class="small">Logged in as:</div>
+    <%= current_user.first_name %>
+  </div>
+</nav>

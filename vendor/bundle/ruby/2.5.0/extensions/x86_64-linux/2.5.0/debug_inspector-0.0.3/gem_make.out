@@ -1,0 +1,15 @@
+current directory: /home/louis/projects/futsal_homebush_league/vendor/bundle/ruby/2.5.0/gems/debug_inspector-0.0.3/ext/debug_inspector
+/home/louis/.rbenv/versions/2.5.8/bin/ruby -r ./siteconf20200408-5020-1go6sf2.rb extconf.rb
+creating Makefile
+
+current directory: /home/louis/projects/futsal_homebush_league/vendor/bundle/ruby/2.5.0/gems/debug_inspector-0.0.3/ext/debug_inspector
+make "DESTDIR=" clean
+
+current directory: /home/louis/projects/futsal_homebush_league/vendor/bundle/ruby/2.5.0/gems/debug_inspector-0.0.3/ext/debug_inspector
+make "DESTDIR="
+compiling debug_inspector.c
+linking shared-object debug_inspector.so
+
+current directory: /home/louis/projects/futsal_homebush_league/vendor/bundle/ruby/2.5.0/gems/debug_inspector-0.0.3/ext/debug_inspector
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 debug_inspector.so ./.gem.20200408-5020-15c07ms
