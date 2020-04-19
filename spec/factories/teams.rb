@@ -1,5 +1,5 @@
 FactoryBot.define do
   factory :team do
-    name { "John" }
+    name { Faker::Team.unique.name }
   end
 end

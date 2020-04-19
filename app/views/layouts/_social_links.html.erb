@@ -1,4 +1,10 @@
 <div class="ht-links">
+	<% if current_user.admin? %>	
+		<%= link_to(admin_center_root_path) do %>
+			<i class="fa fa-lock" aria-hidden="true"></i>
+			Admin
+		<% end %>
+	<% end %>
   <a href="#"><i class="fa fa-facebook"></i></a>
   <a href="#"><i class="fa fa-twitter"></i></a>
   <a href="#"><i class="fa fa-instagram"></i></a>

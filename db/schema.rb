@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20200417060146) do
+ActiveRecord::Schema.define(version: 20200419061716) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,8 +34,15 @@ ActiveRecord::Schema.define(version: 20200417060146) do
   create_table "matches", force: :cascade do |t|
     t.datetime "start_at"
     t.string   "status"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.datetime "end_at"
+    t.datetime "actual_start_at"
+    t.text     "cancellation_reason"
+    t.datetime "cancelled_at"
+    t.text     "postponed_reason"
+    t.datetime "postponed_at"
+    t.string   "kind",                default: "league"
   end
 
   create_table "seasons", force: :cascade do |t|
@@ -53,6 +60,7 @@ ActiveRecord::Schema.define(version: 20200417060146) do
     t.integer  "goals"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "match_id"
   end
 
   add_index "team_match_stats", ["team_id"], name: "index_team_match_stats_on_team_id", using: :btree
@@ -61,12 +69,12 @@ ActiveRecord::Schema.define(version: 20200417060146) do
     t.integer  "season_id"
     t.integer  "team_id"
     t.integer  "division_id"
-    t.integer  "matches_played", default: 0,   null: false
-    t.string   "goals_scored",   default: "0", null: false
-    t.integer  "goals_against",  default: 0,   null: false
-    t.integer  "points",         default: 0,   null: false
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.integer  "matches_played", default: 0, null: false
+    t.integer  "goals_scored",   default: 0, null: false
+    t.integer  "goals_against",  default: 0, null: false
+    t.integer  "points",         default: 0, null: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   add_index "team_season_stats", ["season_id"], name: "index_team_season_stats_on_season_id", using: :btree

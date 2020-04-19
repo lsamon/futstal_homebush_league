@@ -1,0 +1,16 @@
+<div class="container-fluid">
+  <h1 class="mt-4">New Match</h1>
+  <ol class="breadcrumb mb-4">
+      <li class="breadcrumb-item"><%= link_to "Matches", admin_center_matches_path %></li>
+      <li class="breadcrumb-item active">New</li>
+  </ol>
+  <div class="row">
+    <div class=col-md-6>
+      <div class="card mb-4">
+        <div class="card-body">
+          <%= render "form" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

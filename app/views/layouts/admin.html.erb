@@ -32,7 +32,7 @@
         <div id="layoutSidenav_content">
           <main>
             <% flash.each do |message_type, message| %>
-              <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
+              <%= content_tag(:div, message, class: flash_class(message_type)) %>
             <% end %>
             <%= yield %>
           </main>

@@ -21,5 +21,6 @@ Rails.application.routes.draw do
       patch :add_player
     end
     resources :players
+    resources :matches
   end
 end

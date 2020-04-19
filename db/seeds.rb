@@ -1,24 +1,31 @@
 DatabaseCleaner.clean_with :truncation, except: %w(ar_internal_metadata)
 
-players = [
-	{ email: 'loui.amon@gmail.com', name: 'Louis Amon', password: 'chicken', password_confirmation: 'chicken', role: :player, status: :active }
-	{ email: 'atil.selik@gmail.com', name: 'Atil Selik', password: 'chicken', password_confirmation: 'chicken', role: :player, status: :active }
-	{ email: 'cedric.roux@gmail.com', name: 'Cedric Roux', password: 'chicken', password_confirmation: 'chicken', role: :player, status: :active }
-	{ email: 'fu.amon@gmail.com', name: 'Fu Amon', password: 'chicken', password_confirmation: 'chicken', role: :player, status: :active }
-]
+def add_players_to_teams(players, teams)
+	players.in_groups_of(6).each_with_index do |player_group, index|
+		teams[index].players << player_group
+		teams[index].save
+	end
+end
+
+def add_teams_to_divisions(divisions, teams)
+	teams.in_groups_of(5).each_with_index do |team_group, index|
+		divisions[index].teams << team_group
+		divisions[index].save
+	end
+end
 
 puts "Create players"
-Player.create!(players)
+players = FactoryBot.create_list(:player, 120)
 
-teams = [
- { name: 'United Nations' }
- { name: 'Sweet and Sour' }
- { name: 'Luking Good' }
- { name: 'National Joel Appreciation Club' }
-]
+puts "Create Admin User"
+FactoryBot.create(:user, role: :admin, password: "12345678")
 
 puts "Create Teams"
-Team.create!(teams)
+teams = FactoryBot.create_list(:team, 20)
+add_players_to_teams(players, teams)
+
+puts "Create Season"
+FactoryBot.create(:season)
 
 divisions = [
 	{ number: 1, name: "One" },
@@ -29,11 +36,5 @@ divisions = [
 ]
 
 puts "Create Divisions"
-Division.create!(divisions)
-
-def add_players_to_teams
-
-end
-
-def add_teams_to_divisions
-end
+divisions = Division.create!(divisions)
+add_teams_to_divisions(divisions, teams)
