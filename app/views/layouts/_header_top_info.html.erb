@@ -1,7 +1,9 @@
 <div class="ht-info">
   <ul>
     <li><%= Time.current.strftime("%H:%M - %B %-d, %Y") %></li>
-    <li><a href="#">Sign in</a></li>
+   	<% unless current_user %> 
+    	<li><%= link_to "Sign in",  new_user_session_path %></li>
+    <% end %>
     <li><%= link_to "Contact", contact_path %></li>
   </ul>
 </div>

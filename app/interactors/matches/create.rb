@@ -10,6 +10,7 @@ module Matches
 		def call
 			context.fail!(message: "Teams need to be in the same division") unless same_division?
 			context.fail!(message: "Team cannot play itself") if first_team == second_team
+			context.fail!(message: "Cannot play more than two games in a season with the same team") if match_count_exceeded?
 			
 			context.match = Match.create(
 				start_at: params[:start_at],
@@ -57,6 +58,17 @@ module Matches
 						{ team: second_team, goals: params[:second_team_goals] || 0 }
 					]
 				)
+			end
+
+			def match_count_exceeded?
+				match_count =
+					first_team.maches
+										.league
+										.joins(:team_match_stats)
+										.where("team_match_stats.team_id = ?", second_team.id)
+										.count
+
+				match_count > 2
 			end
 
 	end

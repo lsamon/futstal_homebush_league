@@ -1,5 +1,5 @@
 <div class="ht-links">
-	<% if current_user.admin? %>	
+	<% if current_user&.admin? %>	
 		<%= link_to(admin_center_root_path) do %>
 			<i class="fa fa-lock" aria-hidden="true"></i>
 			Admin

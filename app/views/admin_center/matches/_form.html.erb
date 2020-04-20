@@ -31,7 +31,13 @@
 
   <div class="form-group">
     <%= label_tag "start_at", nil, class: "small mb-1" %>
-    <%= datetime_select "start_at", nil, class: "form-control" %>
+    <div class='input-group date' id='datetimepicker'>
+      <input type='text' class="form-control" />
+      <span class="input-group-addon">
+          <span class="fas fa-calendar"></span>
+      </span>
+    </div>
+    <%#= datetime_field "start_at", nil, class: "form-control" %>
   </div>
   
   <%= submit_tag "Create Match", class: "mt-4" %>
